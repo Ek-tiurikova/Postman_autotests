@@ -1,0 +1,23 @@
+//code is creating for Postman Tests
+
+// autotest for indentification of data type in response
+// data variants: 'number', 'string', 'bigint', 'boolean', 'null', 'undefined', 'symbol'
+
+pm.test("Response is string", () => {
+    const responseJson = pm.response.json();
+    pm.expect(responseJson.name).to.be.a('string');
+});
+
+//responce is one of the value list
+
+pm.test("Responce is one of the values", () => {
+  pm.expect(pm.response.json().climate)
+    .to.be.oneOf(["value 1", "value 2", "value 3"]);
+});
+
+//autotest for lenght identification
+
+pm.test("Responce number is between 10 and 99", () => {
+    const responseJson = pm.response.json();
+    pm.expect(responseJson.mass).to.have.lengthOf(2);
+});
